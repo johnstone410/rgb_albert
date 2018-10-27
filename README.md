@@ -1,23 +1,22 @@
-# Logluv Albert 
+# For Rafal's Task
 
-Description: Node project that loads a LOGLUV Encoding TIFF file  into web browser and explore its histogram(linear and logarithmic scale)
+Instruction: do without libraries .. using w3schools and mdn only ..
 
-Based on http://www.anyhere.com/gward/pixformat/tiffluv.html
+loads an image and count the averages of R, G and B channels
 
-## Development
+## Dependencies 
 
-install packages and nodemon as dev dependencies
+an http server (for serving and processing image thru canvas)
 
-`npm install && npm install --save-dev nodemon`
+in my case i use ..  (maybe different on your http server)
+`npm install -g http-server`
 
-to run it locally
+then `http-server`
 
-`npm run dev`
+then go to 'localhost:8080'
 
-## Production 
+check the console (browser) for the result
 
-`npm install && npm start`
+## or try
 
-if pm2 
-
-`npm install && pm2 start server.js`
+just click index.html (if no cors issue )

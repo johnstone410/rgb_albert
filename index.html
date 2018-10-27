@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Do without libraries</title>
+</head>
+<body>
+	<p>please see console for the result (averages of R G B) ... :)</p>
+	
+	<script type="text/javascript">
+		//prepare canvas
+		var canvas = document.createElement('canvas');
+		var ctx = canvas.getContext('2d');
+
+		//load a sample image
+		var img = new Image();
+		img.onload = function(e) {
+			canvas.width = img.naturalWidth;
+			canvas.height = img.naturalHeight;
+			ctx.drawImage(img, 0, 0);
+			document.body.append(canvas);
+			var totalR = [];
+			var totalG = [];
+			var totalB = [];
+			for(var x = 0; x <= canvas.width; x++) {
+				for(var y = 0 ; y <= canvas.height; y++) {
+					var pixelData = ctx.getImageData(x, y, 1, 1).data;
+					totalR.push(pixelData[0]);
+					totalG.push(pixelData[1]);
+					totalB.push(pixelData[2]);
+				}
+			}
+			console.log(`averages
+				R: ${totalR.reduce(function(total, value) { return total + value}) / totalR.length}
+				G: ${totalG.reduce(function(total, value) { return total + value}) / totalG.length}
+				B: ${totalB.reduce(function(total, value) { return total + value}) / totalB.length}
+				`);
+		}
+		img.src = 'images/sample.jpg';
+	</script>
+</body>
+</html>
