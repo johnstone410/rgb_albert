@@ -22,21 +22,21 @@
 			var totalR = [];
 			var totalG = [];
 			var totalB = [];
-			for(var x = 0; x <= canvas.width; x++) {
-				for(var y = 0 ; y <= canvas.height; y++) {
-					var pixelData = ctx.getImageData(x, y, 1, 1).data;
-					totalR.push(pixelData[0]);
-					totalG.push(pixelData[1]);
-					totalB.push(pixelData[2]);
-				}
+			var imageData =  ctx.getImageData(0, 0, canvas.width, canvas.height).data;
+			var idx = 0;
+			for(var i = 0; i <= imageData.length; i += 4) {
+				idx = i;
+				totalR.push(imageData[idx]);
+				totalG.push(imageData[++idx]);
+				totalB.push(imageData[++idx]);
 			}
 			console.log(`averages
-				R: ${totalR.reduce(function(total, value) { return total + value}) / totalR.length}
-				G: ${totalG.reduce(function(total, value) { return total + value}) / totalG.length}
-				B: ${totalB.reduce(function(total, value) { return total + value}) / totalB.length}
+				R: ${totalR.reduce(function(total, value) { return total + ( value || 0 )}) / totalR.length}
+				G: ${totalG.reduce(function(total, value) { return total + ( value || 0 )}) / totalG.length}
+				B: ${totalB.reduce(function(total, value) { return total + ( value || 0 )}) / totalB.length}
 				`);
 		}
-		img.src = 'images/sample2.png';
+		img.src = 'images/sample.jpg';
 	</script>
 </body>
 </html>
